@@ -99,7 +99,7 @@ function pointerPrototype() {
 
 let pointers = [];
 let splatStack = [];
-pointers.push(new pointerPrototype());
+// pointers.push(new pointerPrototype());
 
 const { gl, ext } = getWebGLContext(canvas);
 
@@ -1472,6 +1472,7 @@ canvas.addEventListener('mousedown', e => {
 
 canvas.addEventListener('mousemove', e => {
     let pointer = pointers[0];
+    if (!pointer) return;
     if (!pointer.down) return;
     let posX = scaleByPixelRatio(e.offsetX);
     let posY = scaleByPixelRatio(e.offsetY);
@@ -1546,6 +1547,7 @@ function updatePointerMoveData(pointer, posX, posY) {
 }
 
 function updatePointerUpData(pointer) {
+    if (pointer == null) return;
     pointer.down = false;
 }
 
